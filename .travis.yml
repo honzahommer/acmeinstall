@@ -1,15 +1,18 @@
 language: shell
 sudo: false
 
+env:
+  global:
+    secure: eCqmvUnMbQhLPvtzX218NCIRbE1FLq+wlBb8jVfEyWmbefP/V2z29uYo0OEZfuOO4ExIiUBL/UruE002vtjGZ7BnNppOd0HnAKOSUDAA/VPyH29X2lm29117TIcHpR62/75FNccpQKmj6ln3Aw6yiYgGjyGEgvMLUmR+ftY0XjK+thtsitEis0+6WOAoxFEnzWWGac8aotRSQLAVuAktYynMUtX8VRE27L0F5QwW41w425tJ1yvga/lYsb1Gc2oBJkUaAzLTD0dXnuPljxafAWKSNrd0yrf53bP5zo60uis2az2suy0SZrQMdP5ufdS3P+rEuNvhvrhTF9eYUvAORsMKrSoSWOUAE7D1nJ/ayaD9pHH+n40HWRxKH2aN6+qIQVFr+olqnHBKqB1+GbW+3h5B7LZ8dP7aJWwzzU9/4BxCVLl8QkJAprwBG261/hfCjw8cTFmlTeoFw4mrip5zusd9RNY9ifoTDzd+mk/Q1SJdSR3QP4bxWW4+1ktcnfpt7bgRfxW4NzzqeqRjU0vojFfaJa7EsuA/jL0EmkHxVdUybnh81EuXz/U3UNDEYglQJTbUK2osD19TkdJlPgPkqZRS+M95DuwEWy0cueRb7mESACeqJakzRpswBNCPCl3VQiOaZDWqYmckPhXhvpEg1yVo3/0IQMfDuMajKE+w/4k=
+
 script:
-- find . -type f -name \*.sh | xargs shellcheck 
+- find . -type f -name \*.sh | xargs shellcheck
 - mkdir pages && cp install.sh pages/index.html
 
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token:
-    secure: In9+JCv+JpehOapy4AsD+1zZd6G0QdgbkCAtDQF0Be7EM8e91qKVRw5MqULB95JqFSYImEJlIn3xy3yKIq7OuPiKLREFWb0KG8O8gt9thEUgGzo1F8mVoaZVJRRROTvltvxin8g+I2Ucqqe276O+A/ELWNoACPCL4dcb1Cmaa0JTD7EDBM4xB8zvwOPx3z0A49+0PxqrGwC0pOvMeT00rpQXm78n78eRgLCUlE9JcYGAn2epszhcVVB909zkrr35AsAXoyl936Wk5+caEUvF7WyuLJruQmw4IX3Vg0RZ9zH9WQx5GihNP70J2VHm2mnYweR3lQCWDYqlYzop6s8jIZKX5h0lRqA4hMjt8Og/bmWN1hKshKcrb3vWTw7TGgWKzhSOtN3Fzxvn79cSPzV0ana42YV5IpWE9FZGw65eQcfveqKJoW1/7PFyrQUODorqziPzq+pGre5PWEbE941Dp1cNBsM1+I/gcKntMVXnenJBPQX9Udh4mns3jpXmgKDAb+9zywAupzW8Kg1o/7V66+ri8N0xl2kSrkVgRUFnwqB0LkCLONW9t2mW6UmRuExL7m2EaDsRCo/A3FmaCtil77wSUg9jhCwhB6Jn5zVFL+ii78Jxvc/+NLMnyMfjB5u4Dm2saoABYLUhKxZ6n0maMZIc0wQM1pbk5yH3K8akD/0=
+  github_token: "$GITHUB_TOKEN"
   local_dir: pages
   repo: honzahommer/acme.sh
   target_branch: gh-pages
