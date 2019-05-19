@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 _has() {
+  # shellcheck disable=SC2039
   type "$1" > /dev/null 2>&1
 }
 
