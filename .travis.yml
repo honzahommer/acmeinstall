@@ -1,0 +1,17 @@
+language: shell
+sudo: false
+
+script:
+- bash -c 'shopt -s globstar; shellcheck **/*.{sh,ksh,bash}'
+- mkdir pages && cp install.sh pages/index.html
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token:
+    secure: In9+JCv+JpehOapy4AsD+1zZd6G0QdgbkCAtDQF0Be7EM8e91qKVRw5MqULB95JqFSYImEJlIn3xy3yKIq7OuPiKLREFWb0KG8O8gt9thEUgGzo1F8mVoaZVJRRROTvltvxin8g+I2Ucqqe276O+A/ELWNoACPCL4dcb1Cmaa0JTD7EDBM4xB8zvwOPx3z0A49+0PxqrGwC0pOvMeT00rpQXm78n78eRgLCUlE9JcYGAn2epszhcVVB909zkrr35AsAXoyl936Wk5+caEUvF7WyuLJruQmw4IX3Vg0RZ9zH9WQx5GihNP70J2VHm2mnYweR3lQCWDYqlYzop6s8jIZKX5h0lRqA4hMjt8Og/bmWN1hKshKcrb3vWTw7TGgWKzhSOtN3Fzxvn79cSPzV0ana42YV5IpWE9FZGw65eQcfveqKJoW1/7PFyrQUODorqziPzq+pGre5PWEbE941Dp1cNBsM1+I/gcKntMVXnenJBPQX9Udh4mns3jpXmgKDAb+9zywAupzW8Kg1o/7V66+ri8N0xl2kSrkVgRUFnwqB0LkCLONW9t2mW6UmRuExL7m2EaDsRCo/A3FmaCtil77wSUg9jhCwhB6Jn5zVFL+ii78Jxvc/+NLMnyMfjB5u4Dm2saoABYLUhKxZ6n0maMZIc0wQM1pbk5yH3K8akD/0=
+  local_dir: pages
+  repo: honzahommer/acme.sh
+  target_branch: gh-pages
+  on:
+    branch: master
